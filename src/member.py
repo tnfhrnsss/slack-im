@@ -11,7 +11,7 @@ def register(user_id, user_name):
         'X-Attic-User': 'admin',
         'X-Attic-Role': 'manageMember'
     }
-    payload = {"userId": user_id, "name": user_name, "password": "1", "roleGroupId": "ADMIN", "centerIds":["spectra"]}
+    payload = {"userId": user_id, "name": user_name, "password": "1", "roleGroupId": "ADMIN", "centerIds":["spectra"], "customType": "user", "metadata": { "counselType": "user"}}
     response = requests.post(api_url, headers=headers, json=payload)
 
     if response.ok:
