@@ -25,8 +25,7 @@ def run_sync(users):
         email = profile.get('email')
 
         email_id = email.split("@")[0]
-        print(email_id)
-        print("User {} registered successfully.".format(email_id))
+        print("target email_id {}.".format(email_id))
         member.register(email_id, user_name)
 
 
