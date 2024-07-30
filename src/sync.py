@@ -1,3 +1,4 @@
+import http.client
 import os
 import sys
 import slackUser
@@ -7,15 +8,22 @@ print(sys.argv[1])
 
 api_url = sys.argv[1]
 
+
 def execute():
     if len(api_url) == 0:
         print("api path is null.")
     else:
         try:
-            users = slackUser.findAll()
-            run_sync(users)
+            run_sync(find_users())
+        except http.client.IncompleteRead as e:
+            print("IncompleteRead error occurred exception.!!", e)
+            run_sync(find_users())
         except Exception as e:
             print("occur exception.!!", e)
+
+
+def find_users():
+    return slackUser.findAll()
 
 
 def run_sync(users):
